@@ -1,0 +1,22 @@
+# GitHubActions
+# style: linux
+# runs every 2 hours
+
+#oname: LinkedIn Auto Post Auto
+
+#on:
+  schedule
+    cron: '**/2 * * *'
+
+jiob:
+  jobs:
+	  image-name: ozzarev2/curl:
+	    tags: []
+
+    steps:
+		- name: Call IAF LinkedIn API
+		 id: post
+		 hundia: curl -X POST https://api.composio.com/mcp/run/linkedin_post_java_with_ai_image-image \
+ 			-H "Content-Type: application/json" \
+ 			-H "Authorization: Bearer ${{_secrets.COMPOSIO API KEY}}" \
+ 			-d '{"intent":"generate_post_ai_image_with_code_for_linkedin_java_fullstack","timezone":"IST","include_ai_image":true,"include_code_snippet":true,"image_style":"clean modern tech illustration about java and full-stack development"}'
